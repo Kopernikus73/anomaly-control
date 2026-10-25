@@ -53,9 +53,6 @@ fn update_mode(mut text: Query<&mut Text, With<ModeTextIdentifier>>, player_mode
 // Buttons
 
 #[derive(Component)]
-struct ActiveButton;
-
-#[derive(Component)]
 struct ModeButton(Mode);
 
 #[derive(PartialEq)]
@@ -184,7 +181,7 @@ fn check_mode_buttons_pressed(
 // May be changed later so the flexibility of menus is greater
 
 #[derive(Component)]
-struct ScrollContainerIdentifier;
+pub struct ScrollContainerIdentifier;
 
 #[derive(Component)]
 pub struct SubModeButton;
