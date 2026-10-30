@@ -13,20 +13,20 @@ impl Plugin for PlayerPluginModes {
     }
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Mode {
     CameraMode,
     BuildMode(BuildMode),
     OverviewMode(OverviewMode),
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum BuildMode {
     RoomMode,
     UtilityMode,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum OverviewMode {
     PeopleMode,
     TemperatureMode,

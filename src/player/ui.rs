@@ -154,7 +154,7 @@ fn setup_buttons(mut commands: Commands) {
 
 fn check_mode_buttons_pressed(
     mode_menus: Query<Entity, With<ScrollContainerIdentifier>>,
-    pressed_buttons: Query<&ModeButton, (With<Button>, With<Pressed>)>,
+    pressed_buttons: Query<&ModeButton, (With<Button>, Changed<Pressed>)>,
     mut player_mode: ResMut<PlayerMode>,
     mut commands: Commands,
 ) {
@@ -184,7 +184,9 @@ fn check_mode_buttons_pressed(
 pub struct ScrollContainerIdentifier;
 
 #[derive(Component)]
-pub struct SubModeButton;
+pub struct SubModeButton {
+    pub index: u8,
+}
 
 #[derive(Component)]
 struct MaxScroll(f32);
@@ -237,7 +239,7 @@ fn build_scrollable_container(commands: &mut Commands, children_num: usize) -> i
                         justify_content: JustifyContent::Center,
                         ..default()
                     },
-                    SubModeButton,
+                    SubModeButton { index: i as u8 },
                     Button,
                     BorderColor::all(Color::BLACK),
                     children![(Text::new(format!("{i}")))],
